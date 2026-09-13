@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenShockBridge", "OpenShockBridge\OpenShockBridge.csproj", "{FFE30898-C014-494C-8560-743052C24CDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFE30898-C014-494C-8560-743052C24CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE30898-C014-494C-8560-743052C24CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE30898-C014-494C-8560-743052C24CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE30898-C014-494C-8560-743052C24CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

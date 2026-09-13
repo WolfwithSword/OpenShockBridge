@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net481</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <AssemblyName>OpenShockBridge</AssemblyName>
+        <RootNamespace>OpenShockBridge</RootNamespace>
+        <Version>1.0.0.0</Version>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.*" />
+        <PackageReference Include="ILRepack" Version="2.0.*" PrivateAssets="all" GeneratePathProperty="true" />
+    </ItemGroup>
+
+    <Target Name="ILRepackMerge" AfterTargets="Build">
+        <PropertyGroup>
+            <OutFull>$([System.IO.Path]::GetFullPath('$(OutputPath)'))</OutFull>
+            <ILRepackExe>$(PkgILRepack)\tools\ILRepack.exe</ILRepackExe>
+        </PropertyGroup>
+        <ItemGroup>
+            <MergeAssemblies Include="$(OutFull)*.dll" Exclude="$(OutFull)$(AssemblyName).dll" />
+        </ItemGroup>
+        <MakeDir Directories="$(OutFull)merged" />
+        <Exec Command="&quot;$(ILRepackExe)&quot; /internalize /lib:&quot;$(OutFull.TrimEnd('\'))&quot; /out:&quot;$(OutFull)merged\$(AssemblyName).dll&quot; &quot;$(OutFull)$(AssemblyName).dll&quot; @(MergeAssemblies->'&quot;%(Identity)&quot;', ' ')" />
+    </Target>
+</Project>
